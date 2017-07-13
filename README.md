@@ -1,34 +1,3 @@
-# `Instructions` 
-
-USING JQUERY IS NOT ALLOWED IN ANY CASE, as well as any DOM manipulations. However you can use bootstrap as much as you want and of course any native javascript function such as map, filter, etc.
-
-0.We give you a JSON file with an array of objects (items.json). Get the data from that file in the controller you create for the exercise. You can use any angular modules you want, and feel free to create your own files in the solution. If you don't know how to do this, no problem:
-In the grid.js file we provide, you got a commented out variable with the array, so you can use it and carry on with the exercise.
-
-1.Given the array of objects we gave you, just create a grid with 3 columns and populate it using that data. Each object has 3 properties: Name, ItemType and IsSpecial. Display on each cell of the grid the Name and the ItemType, and if the IsSpecial field=true , then display a label which has the text "IS SPECIAL" on it. 
-
-You can use bootstrap classes, html tables or whatever you want. Do not worry too much about the layout at this stage, that will come later. But if you want, you can apply the css class .gridItem to each cell, provided on the css file we give you.(It just sets a border and a height to the item where it is applied)
-
-2.Below the grid, add a form to add new items to it. You will only have to add the name and the item type. So the form consist simply in one text input field for text and a dropdown list with the 3 different Item Types "category1","category2" and "category3". You need to add a button so that when you click on it, the item is added to the grid.
-
-3.Add validation to the form above, so that both fields are required. You should display an error message saying "REQUIRED" next to each field which has not been filled in. In the same way, the button should only be enabled if the fields are both valid.
-
-4.Add a dropdownlist above the grid which allows you to filter the items by the item type. The dropdownlist will display the 3 different Item Types "category1","category2" and "category3" and another option "All" to display all items when you select it. Do this in the view using the appropiate angular filter. Do not filter the items in the javascript.
-
-5.Change the current route for the grid stuff you created from "/view1" to "/grid", and create another route "/simpleMessage" which just displays a custom message you want in the HTML.
-
-6.We provide you with a set of colours in the app.css file under the section "COLOURS TO USE". What you have to do is simply apply that set of colours to the grid items. The first item in the grid should use the first colour, the second the second colour... and when you run out of colours, just "restart" using them again in the same order.
-
-7.Add a "DELETE" button on each item of the grid, so that when you click on it, the item is removed from the grid.
-
-8.Now you have to reorder the items in the grid and apply different colour rules to them.
-a.Display the items with "category 1" first, and then items in categories 2 and 3. Do not worry about the colours just yet.
-b.Now with the grid items sorted as above, change the colours following the next rules:
-*Category 1 items should use only black and white colours. Use them alternatively in the grid.
-*Category 2 and 3 items should use green, blue, yellow and red colours. Again, use them alternatively.
-c.For any item which has the property IsSpecial=true, set it to be purple.
-
-
 # `angular-seed` — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS][angularjs] web app. You can use it
