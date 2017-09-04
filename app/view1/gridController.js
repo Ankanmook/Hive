@@ -24,19 +24,25 @@ var myApp = angular.module('myApp');
     $scope.orderByFilter = [{name:"Ascending", value:true},{name:"Descending", value:false}];
     $scope.currentOrderByFilter = true;
 
-    $http.get("https://jsonplaceholder.typicode.com/users")
-    .then(function (response) {
-        //success
-        angular.copy(response.data, $scope.users); //copy data from reponse data to data       
-        $scope.user = $scope.users[0];
-        $scope.userId = $scope.user.userId;
-        $scope.currentUser = $scope.user;
-    },
-    function (error) {
-        //failure
-        console.log( "Failed to load data " + error);
-    }).finally(function () {
-    });
+    _getUser();
+
+    function _getUser()
+    {
+        $http.get("https://jsonplaceholder.typicode.com/users")
+        .then(function (response) {
+            //success
+            angular.copy(response.data, $scope.users); //copy data from reponse data to data       
+            $scope.user = $scope.users[0];
+            $scope.userId = $scope.user.userId;
+            //$scope.currentUser = $scope.user;
+        },
+        function (error) {
+            //failure
+            console.log( "Failed to load data " + error);
+        }).finally(function () {
+        });
+    }
+
 
     function _getPost(userId)
     {
