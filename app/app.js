@@ -14,5 +14,10 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
       controllerAs: "grid",
       templateUrl: 'view1/view1.html'
     })
+    .when('/users/:id', {
+      controller: "userController",
+      controllerAs: "user",
+      templateUrl: 'profileView/user.html'
+    })
     .otherwise({redirectTo: '/view1'});
 }]);

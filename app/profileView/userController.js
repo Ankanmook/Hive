@@ -2,9 +2,10 @@ var myApp = angular.module('myApp');
 
 (function(app){
     'use strict';
-    app.controller("gridController", ['$scope', '$http', 
-    function($scope, $http){
+    app.controller("userController", ['$routeParams','$scope', '$http', 
+    function($routeParams, $scope, $http){
 
+    console.log($routeParams.id)
 
     $scope.posts = [];
     $scope.comments = [];
@@ -54,51 +55,6 @@ var myApp = angular.module('myApp');
         });    
     }
 
-    function _getComments(post)
-    {
-        post.comments = [];
-        $http.get("https://jsonplaceholder.typicode.com/comments?postId"+post.postId)
-        .then(function (response) {
-            //success
-            angular.copy(response.data, post.comments); //copy data from reponse data to data
-            angular.forEach(post.comments, function(el){
-                var index = el.id % 8;
-                switch (index) {            
-                    case 1:
-                        el.color = 'yellowItem';
-                        break;
-                    case 2:
-                        el.color = 'blueItem';
-                        break;
-                    case 3:
-                        el.color = 'redItem';
-                        break;
-                    case 4:
-                        el.color = 'whiteItem';
-                        break;
-                    case 5:
-                        el.color = 'purpleItem';
-                        break;
-                    case 6:
-                        el.color = 'brownItem';
-                        break;
-                    case 7:
-                        el.color = 'greenItem';
-                        break;
-                    case 8:
-                        el.color = 'pinkItem';
-                        break;
-                  }   
-            });
-        },
-        function (error) {
-            //failure
-            console.log( "Failed to load data " + error);
-        }).finally(function () {
-        });    
-        return post;
-    }
-
 
     $scope.updateUser = function(){
         
@@ -133,22 +89,6 @@ var myApp = angular.module('myApp');
           }   
           console.log($scope.orderParam);
           console.log($scope.reverse);
-      };
-
-      $scope.collapsed = false;
-      $scope.ToggleMoreLessButton = "More"; 
-
-      $scope.getComments = function(post)
-      {
-        this.collapsed = !this.collapsed;
-        if (this.ToggleMoreLessButton === "More") {
-            this.ToggleMoreLessButton = "Less";
-
-            post =  _getComments(post);
-            console.log(post);
-        }else{
-            this.ToggleMoreLessButton = "More"; 
-        }
       };
 
     }]).filter('orderObjectBy', function () {

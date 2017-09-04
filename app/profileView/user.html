@@ -1,0 +1,19 @@
+<a href="#/" class="btn btn-sm btn-default pull-right"><i class="glyphicon glyphicon-chevron-left"></i> Back </a>
+
+<div class="row dashboard-content-header">
+        <div class="col-md-2"><h4>Name</h4></div>
+        <div class="col-md-2"><h4>Email</h4></div>
+        <div class="col-md-3"><h4>Address</h4></div>
+        <div class="col-md-2"><h4>Phone</h4></div>
+        <div class="col-md-1"><h4>Website</h4></div>
+        <div class="col-md-2"><h4>Company</h4></div>
+</div>
+        
+<div class="row dashboard-content">
+        <div class="col-md-2"><h7>{{currentUser.name}}</h7></div>
+        <div class="col-md-2"><h7>{{currentUser.email}}</h7></div>
+        <div class="col-md-3"><h7>{{currentUser.address.street}} {{currentUser.address.suite}} {{currentUser.address.city}}</h7></div>
+        <div class="col-md-2"><h7>{{currentUser.phone}}</h7></div>
+        <div class="col-md-1"><h7>{{currentUser.website}}</h7></div>
+        <div class="col-md-2"><h7>{{currentUser.company.name}}</h7></div>
+</div>
