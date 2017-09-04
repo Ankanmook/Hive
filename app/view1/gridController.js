@@ -5,6 +5,7 @@ var myApp = angular.module('myApp');
     app.controller("gridController", ['$scope', '$http', 
     function($scope, $http){
 
+    $scope.post ;
 
     $scope.posts = [];
     $scope.comments = [];
@@ -54,14 +55,15 @@ var myApp = angular.module('myApp');
         });    
     }
 
-    function _getComments(post)
+    function _getComments()
     {
-        post.comments = [];
-        $http.get("https://jsonplaceholder.typicode.com/comments?postId"+post.postId)
+        $scope.post.comments = [];
+        
+        $http.get("https://jsonplaceholder.typicode.com/comments?postId="+ $scope.post.id)
         .then(function (response) {
             //success
-            angular.copy(response.data, post.comments); //copy data from reponse data to data
-            angular.forEach(post.comments, function(el){
+            angular.copy(response.data, $scope.post.comments); //copy data from reponse data to data            
+            angular.forEach($scope.post.comments, function(el){
                 var index = el.id % 8;
                 switch (index) {            
                     case 1:
@@ -74,13 +76,13 @@ var myApp = angular.module('myApp');
                         el.color = 'redItem';
                         break;
                     case 4:
-                        el.color = 'whiteItem';
+                        el.color = 'brownItem';
                         break;
                     case 5:
                         el.color = 'purpleItem';
                         break;
                     case 6:
-                        el.color = 'brownItem';
+                        el.color = 'whiteItem';
                         break;
                     case 7:
                         el.color = 'greenItem';
@@ -88,15 +90,14 @@ var myApp = angular.module('myApp');
                     case 8:
                         el.color = 'pinkItem';
                         break;
-                  }   
+                  }                
             });
         },
         function (error) {
             //failure
             console.log( "Failed to load data " + error);
         }).finally(function () {
-        });    
-        return post;
+        });            
     }
 
 
@@ -143,9 +144,9 @@ var myApp = angular.module('myApp');
         this.collapsed = !this.collapsed;
         if (this.ToggleMoreLessButton === "More") {
             this.ToggleMoreLessButton = "Less";
-
-            post =  _getComments(post);
-            console.log(post);
+           
+            $scope.post = post;
+            _getComments();
         }else{
             this.ToggleMoreLessButton = "More"; 
         }
