@@ -5,7 +5,7 @@ var myApp = angular.module('myApp');
     app.controller("gridController", ['$scope', '$http', 
     function($scope, $http){
 
-    $scope.yoe = "ankan";
+    //$scope.yoe = "ankan";
     // console.log("hi");
     // console.log($scope);
 
