@@ -15,10 +15,14 @@ var myApp = angular.module('myApp');
     $scope.todos = [];
     $scope.users = [];
 
+    $scope.user;
+
     $http.get("https://jsonplaceholder.typicode.com/users")
     .then(function (response) {
         //success
         angular.copy(response.data, $scope.users); //copy data from reponse data to data
+        
+        $scope.user = $scope.users[0];
         console.log($scope.data);
     },
     function (error) {
