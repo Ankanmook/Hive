@@ -5,119 +5,23 @@ var myApp = angular.module('myApp');
     app.controller("userController", ['$routeParams','$scope', '$http', 
     function($routeParams, $scope, $http){
 
-    console.log($routeParams.id)
-
-    $scope.posts = [];
-    $scope.comments = [];
-
-    $scope.albums = [];
-    $scope.photos = [];
-
-    $scope.todos = [];
-    $scope.users = [];
-
-    $scope.user;
     $scope.currentUser;
-
-    $scope.userId;
-
-    $scope.orderByFilter = [{name:"Ascending", value:true},{name:"Descending", value:false}];
-    $scope.currentOrderByFilter = true;
-
     $http.get("https://jsonplaceholder.typicode.com/users")
     .then(function (response) {
         //success
-        angular.copy(response.data, $scope.users); //copy data from reponse data to data
-        
-        $scope.user = $scope.users[0];
-        $scope.userId = $scope.user.userId;
-        console.log($scope.data);
-        $scope.currentUser = $scope.user;
+        angular.forEach(response.data, function(el){                   
+            if(el.id == $routeParams.id){
+                    $scope.currentUser = el;
+            }
+        });
     },
     function (error) {
         //failure
         console.log( "Failed to load data " + error);
     }).finally(function () {
-    });
+    }); 
+    }])
 
-    function _getPost(userId)
-    {
-        $http.get("https://jsonplaceholder.typicode.com/posts?userId="+userId)
-        .then(function (response) {
-            //success
-            angular.copy(response.data, $scope.posts); //copy data from reponse data to data
-            console.log($scope.posts);
-        },
-        function (error) {
-            //failure
-            console.log( "Failed to load data " + error);
-        }).finally(function () {
-        });    
-    }
-
-
-    $scope.updateUser = function(){
-        
-        console.log( $scope.userId);
-        
-        angular.forEach($scope.users, function(el){           
-            if(el.id == $scope.userId)
-                {                    
-                    _getPost(el.id);
-                    $scope.currentUser = el;            
-                }
-
-        }); 
-    };
-
-      var increment = 0;
-      $scope.reverse = true;
-      $scope.orderParam = '';
-
-      $scope.toggleOrder = function(){
-        increment++;
-        console.log(increment);
-        switch (increment) {            
-            case 1:
-              $scope.orderParam = 'id';
-              $scope.reverse = !$scope.reverse;
-              break;
-            case 2:
-              $scope.orderParam = '';
-              increment = 0;
-              break;
-          }   
-          console.log($scope.orderParam);
-          console.log($scope.reverse);
-      };
-
-    }]).filter('orderObjectBy', function () {
-                       
-        return function(input, attribute) {
-            
-            var ascending = false;
-            console.log(ascending);
-            
-            if (!angular.isObject(input)) return input;
-        
-            var array = [];
-            for(var objectKey in input) {
-                array.push(input[objectKey]);
-            }
-        
-            array.sort(function(a, b){
-                a = parseInt(a[attribute]);
-                b = parseInt(b[attribute]);
-                if(ascending === true)
-                    {
-                        return a - b;
-                    }else{
-                        return b - a;
-                    }
-            });
-            return array;
-        }
-    });
 })(myApp);
 
 //Write the javascript here!

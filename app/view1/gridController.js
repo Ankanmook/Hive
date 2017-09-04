@@ -27,11 +27,9 @@ var myApp = angular.module('myApp');
     $http.get("https://jsonplaceholder.typicode.com/users")
     .then(function (response) {
         //success
-        angular.copy(response.data, $scope.users); //copy data from reponse data to data
-        
+        angular.copy(response.data, $scope.users); //copy data from reponse data to data       
         $scope.user = $scope.users[0];
         $scope.userId = $scope.user.userId;
-        console.log($scope.data);
         $scope.currentUser = $scope.user;
     },
     function (error) {
@@ -46,7 +44,6 @@ var myApp = angular.module('myApp');
         .then(function (response) {
             //success
             angular.copy(response.data, $scope.posts); //copy data from reponse data to data
-            console.log($scope.posts);
         },
         function (error) {
             //failure
@@ -101,10 +98,7 @@ var myApp = angular.module('myApp');
     }
 
 
-    $scope.updateUser = function(){
-        
-        console.log( $scope.userId);
-        
+    $scope.updateUser = function(){        
         angular.forEach($scope.users, function(el){           
             if(el.id == $scope.userId)
                 {                    
@@ -121,7 +115,6 @@ var myApp = angular.module('myApp');
 
       $scope.toggleOrder = function(){
         increment++;
-        console.log(increment);
         switch (increment) {            
             case 1:
               $scope.orderParam = 'id';
@@ -131,9 +124,7 @@ var myApp = angular.module('myApp');
               $scope.orderParam = '';
               increment = 0;
               break;
-          }   
-          console.log($scope.orderParam);
-          console.log($scope.reverse);
+          }
       };
 
       $scope.collapsed = false;
@@ -162,9 +153,7 @@ var myApp = angular.module('myApp');
                        
         return function(input, attribute) {
             
-            var ascending = false;
-            console.log(ascending);
-            
+            var ascending = false;            
             if (!angular.isObject(input)) return input;
         
             var array = [];
@@ -186,23 +175,3 @@ var myApp = angular.module('myApp');
         }
     });
 })(myApp);
-
-//Write the javascript here!
-
-// var itemList = [
-//   { IsSpecial: true, Name: "item 1", ItemType: "category1"},
-// { IsSpecial: false, Name: "item 2", ItemType: "category1"},
-// { IsSpecial: false, Name: "item 3", ItemType: "category2"},
-// { IsSpecial: false, Name: "item 4", ItemType: "category3"},
-// { IsSpecial: true, Name: "item 5", ItemType: "category2"},
-// { IsSpecial: true, Name: "item 6", ItemType: "category1"},
-// { IsSpecial: false, Name: "item 7", ItemType: "category1"},
-// { IsSpecial: false, Name: "item 8", ItemType: "category2"},
-// { IsSpecial: false, Name: "item 9", ItemType: "category3"},
-// { IsSpecial: true, Name: "item 10", ItemType: "category3"},
-// { IsSpecial: true, Name: "item 11", ItemType: "category2"},
-// { IsSpecial: false, Name: "item 12", ItemType: "category1"},
-// { IsSpecial: false, Name: "item 13", ItemType: "category2"},
-// { IsSpecial: false, Name: "item 14", ItemType: "category3"},
-// { IsSpecial: true, Name: "item 15", ItemType: "category2"}
-// ];

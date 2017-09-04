@@ -1,19 +1,37 @@
 <a href="#/" class="btn btn-sm btn-default pull-right"><i class="glyphicon glyphicon-chevron-left"></i> Back </a>
-
+<br/>
 <div class="row dashboard-content-header">
-        <div class="col-md-2"><h4>Name</h4></div>
-        <div class="col-md-2"><h4>Email</h4></div>
-        <div class="col-md-3"><h4>Address</h4></div>
-        <div class="col-md-2"><h4>Phone</h4></div>
-        <div class="col-md-1"><h4>Website</h4></div>
-        <div class="col-md-2"><h4>Company</h4></div>
+                <div class="col-md-2"><h4>Name</h4></div>
+                <div class="col-md-9"><h4>{{currentUser.name}}</h4></div>
 </div>
-        
-<div class="row dashboard-content">
-        <div class="col-md-2"><h7>{{currentUser.name}}</h7></div>
-        <div class="col-md-2"><h7>{{currentUser.email}}</h7></div>
-        <div class="col-md-3"><h7>{{currentUser.address.street}} {{currentUser.address.suite}} {{currentUser.address.city}}</h7></div>
-        <div class="col-md-2"><h7>{{currentUser.phone}}</h7></div>
-        <div class="col-md-1"><h7>{{currentUser.website}}</h7></div>
-        <div class="col-md-2"><h7>{{currentUser.company.name}}</h7></div>
+<div class="row dashboard-content-header">
+                <div class="col-md-2"><h4>Email</h4></div>
+                <div class="col-md-9"><h4>{{currentUser.email}}</h4></div>
+</div>
+<div class="row dashboard-content-header">
+                <div class="col-md-2"><h4>Name</h4></div>
+                <div class="col-md-9"><h4>{{currentUser.name}}</h4></div>
+</div>
+<div class="row dashboard-content-header">
+                <div class="col-md-2"><h4>Address</h4></div>
+                <div class="col-md-2"><h4>{{currentUser.address.street}}</h4></div>
+                <div class="col-md-2"><h4>{{currentUser.address.suite}}</h4></div>
+                <div class="col-md-2"><h4>{{currentUser.address.city}}</h4></div>
+                <div class="col-md-2"><h4>{{currentUser.address.zipcode}}</h4></div>
+                <div class="col-md-1"><h4>{{currentUser.address.geo.lat}}</h4></div>
+                <div class="col-md-1"><h4>{{currentUser.address.geo.lon}}</h4></div>
+</div>
+<div class="row dashboard-content-header">
+                <div class="col-md-2"><h4>Phone</h4></div>
+                <div class="col-md-9"><h4>{{currentUser.phone}}</h4></div>
+</div>
+<div class="row dashboard-content-header">
+                <div class="col-md-2"><h4>Website</h4></div>
+                <div class="col-md-9"><h4>{{currentUser.website}}</h4></div>
+</div>
+<div class="row dashboard-content-header">
+                <div class="col-md-2"><h4>Company</h4></div>
+                <div class="col-md-3"><h4>{{currentUser.name}}</h4></div>
+                <div class="col-md-4"><h4>{{currentUser.catchPhrase}}</h4></div>
+                <div class="col-md-3"><h4>{{currentUser.bs}}</h4></div>
 </div>
