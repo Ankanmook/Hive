@@ -58,21 +58,17 @@ var myApp = angular.module('myApp');
         
         angular.forEach($scope.users, function(el){           
             if(el.id == $scope.userId)
-                {
-                     
-                    console.log(el);
-                    
+                {                    
+                    console.log(el);                    
                     _getPost(el.id);
-
                     $scope.currentUser = el;
-
-                    $scope.currentUserId = el.id;
-                    $scope.currentUserName = el.name;
-                    $scope.currentUserEmail = el.email;        
-                    $scope.currentUserAddress = $scope.user.address.street + " " + $scope.user.address.suite + " " +  $scope.user.address.city + " " +  $scope.user.address.zipcode;
-                    $scope.currentUserPhone = el.phone;
-                    $scope.currentUserWebsite = el.website
-                    $scope.currentUserCompany = $scope.user.company.name + " " + $scope.user.company.catchPhrase + " " + $scope.user.company.bs;
+                    // $scope.currentUserId = el.id;
+                    // $scope.currentUserName = el.name;
+                    // $scope.currentUserEmail = el.email;        
+                    // $scope.currentUserAddress = $scope.user.address.street + " " + $scope.user.address.suite + " " +  $scope.user.address.city + " " +  $scope.user.address.zipcode;
+                    // $scope.currentUserPhone = el.phone;
+                    // $scope.currentUserWebsite = el.website
+                    // $scope.currentUserCompany = $scope.user.company.name + " " + $scope.user.company.catchPhrase + " " + $scope.user.company.bs;
             
                 }
 
