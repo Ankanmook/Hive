@@ -5,13 +5,29 @@ var myApp = angular.module('myApp');
     app.controller("gridController", ['$scope', '$http', 
     function($scope, $http){
 
-    //$scope.yoe = "ankan";
-    // console.log("hi");
-    // console.log($scope);
 
     $scope.posts = [];
+    $scope.comments = [];
 
-    $http.get("https://jsonplaceholder.typicode.com/posts")
+    $scope.albums = [];
+    $scope.photos = [];
+
+    $scope.todos = [];
+    $scope.users = [];
+
+    $http.get("https://jsonplaceholder.typicode.com/users")
+    .then(function (response) {
+        //success
+        angular.copy(response.data, $scope.users); //copy data from reponse data to data
+        console.log($scope.data);
+    },
+    function (error) {
+        //failure
+        console.log( "Failed to load data " + error);
+    }).finally(function () {
+    });
+
+    $http.get("https://jsonplaceholder.typicode.com/posts?userId=1")
     .then(function (response) {
         //success
         angular.copy(response.data, $scope.posts); //copy data from reponse data to data
