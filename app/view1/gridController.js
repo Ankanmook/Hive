@@ -4,9 +4,25 @@ var myApp = angular.module('myApp');
     'use strict';
     app.controller("gridController", ['$scope', '$http', 
     function($scope, $http){
+
     $scope.yoe = "ankan";
-    console.log("hi");
-    console.log($scope);
+    // console.log("hi");
+    // console.log($scope);
+
+    $scope.posts = [];
+
+    $http.get("https://jsonplaceholder.typicode.com/posts")
+    .then(function (response) {
+        //success
+        angular.copy(response.data, $scope.posts); //copy data from reponse data to data
+        console.log($scope.data);
+    },
+    function (error) {
+        //failure
+        console.log( "Failed to load data " + error);
+    }).finally(function () {
+    });
+
     }]);
     
 })(myApp);
