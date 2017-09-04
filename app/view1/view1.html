@@ -28,15 +28,23 @@
 
 <div class="row dashboard-content-header">
     <!-- <div class="col-md-1"><h4 class="btn btn-primary" type="button"> Id</h4></div> -->
-    <div class="col-md-2 dropdown">
+    <!-- <div class="col-md-2 dropdown">
             <select class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ng-model="currentOrderByFilter" ng-change="updateOrderByFilter()">Sort By Id
                     <option ng-repeat="orderByFilter in orderByFilter" value="{{orderByFilter.value}}">{{orderByFilter.name}}</option>
+    </div> -->
+    <div class="col-md-2 dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a ng-click="updateOrderByFilter(true)">Acending</a></li>
+                      <li><a ng-click="updateOrderByFilter(false)">Descending</a></li>
+                    </ul>
     </div>
     <div class="col-md-3"><h4>Title</h4></div>
     <div class="col-md-7"><h4>Body</h4></div>
 </div>
 
-<div ng-repeat="post in posts | orderObjectBy:'id': currentOrderByFilter ">
+<div ng-repeat="post in posts | orderObjectBy:'id' ">
     <div class="row dashboard-content">
         <div class="col-md-2"><h6>{{post.id}}</h6></div>
         <div class="col-md-3"><h6>{{post.title}}</h6></div>

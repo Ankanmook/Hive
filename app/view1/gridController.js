@@ -45,7 +45,7 @@ var myApp = angular.module('myApp');
         .then(function (response) {
             //success
             angular.copy(response.data, $scope.posts); //copy data from reponse data to data
-            console.log($scope.data);
+            console.log($scope.posts);
         },
         function (error) {
             //failure
@@ -69,16 +69,18 @@ var myApp = angular.module('myApp');
         }); 
     };
 
-    $scope.updateOrderByFilter = function()
+    $scope.updateOrderByFilter = function(input)
     {
-        console.log( $scope.currentOrderByFilter);
+        console.log(input);
+        //console.log( $scope.currentOrderByFilter);
     }
 
 
     }]).filter('orderObjectBy', function () {
                        
-        return function(input, attribute,ascending) {
-
+        return function(input, attribute) {
+            
+            var ascending = false;
             console.log(ascending);
             
             if (!angular.isObject(input)) return input;
@@ -91,7 +93,7 @@ var myApp = angular.module('myApp');
             array.sort(function(a, b){
                 a = parseInt(a[attribute]);
                 b = parseInt(b[attribute]);
-                if(ascending == true)
+                if(ascending === true)
                     {
                         return a - b;
                     }else{
