@@ -4,7 +4,7 @@ var myApp = angular.module('myApp');
     'use strict';
     app.controller("gridController", ['$scope', '$http', 
     function($scope, $http){
-    $scope.chukar = "ankan";
+    $scope.yoe = "ankan";
     console.log("hi");
     console.log($scope);
     }]);
