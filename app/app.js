@@ -10,6 +10,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $locationProvider.hashPrefix('!');
   $routeProvider
     .when('/view1', {
+      controller: "gridController",
+      controllerAs: "grid",
       templateUrl: 'view1/view1.html'
     })
     .otherwise({redirectTo: '/view1'});

@@ -1,4 +1,15 @@
-'use strict';
+var myApp = angular.module('myApp');
+
+(function(app){
+    'use strict';
+    app.controller("gridController", ['$scope', '$http', 
+    function($scope, $http){
+    $scope.chukar = "ankan";
+    console.log("hi");
+    console.log($scope);
+    }]);
+    
+})(myApp);
 
 //Write the javascript here!
 
