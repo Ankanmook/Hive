@@ -7,24 +7,20 @@
         </select>
     </div>
     
-<div class="row dashboard-content-header">
+<div class="row dashboard-content-header"  ng-show="currentUser">
         <div class="col-md-2"><h4>Name</h4></div>
         <div class="col-md-2"><h4>Email</h4></div>
-        <div class="col-md-3"><h4>Address</h4></div>
-        <div class="col-md-2"><h4>Phone</h4></div>
-        <div class="col-md-1"><h4>Website</h4></div>
-        <div class="col-md-2"><h4>Company</h4></div>
+        <div class="col-md-3"><h4>Profile</h4></div>
 </div>
         
 <div class="row dashboard-content">
         <div class="col-md-2"><h7>{{currentUser.name}}</h7></div>
         <div class="col-md-2"><h7>{{currentUser.email}}</h7></div>
-        <div class="col-md-3"><h7>{{currentUser.address.street}} {{currentUser.address.suite}} {{currentUser.address.city}}</h7></div>
-        <div class="col-md-2"><h7>{{currentUser.phone}}</h7></div>
-        <div class="col-md-1"><h7>{{currentUser.website}}</h7></div>
-        <div class="col-md-2"><a ng-href="#!/user/{{currentUser.id}}">Profile</a></div>
+        <div class="col-md-2"><a ng-show="currentUser" ng-href="#!/user/{{currentUser.id}}">Profile</a></div>
 </div>
 
+<br/>
+<br/>
 
 <div class="row dashboard-content-header">
 
