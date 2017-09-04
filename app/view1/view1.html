@@ -43,7 +43,7 @@
         <div class="col-md-3"><h6>{{post.title}}</h6></div>
         <div class="col-md-5"><h6>{{post.body}}</h6></div>
         <div class="col-md-2"><button class="btn btn-primary" type="button" ng-click="getComments(post)">{{ToggleMoreLessButton}}</div>
-        <div class="col-md-1"><button class="btn btn-primary" type="button" ng-click="delete(comment)">Delete</h6></div>
+        <div class="col-md-1"><button class="btn btn-primary" type="button" ng-click="deletePost(post)">Delete</div>
     </div> 
     <div ng-show="collapsed" class="panel-collapse dashboard-collapse row dashboard-content-header" id="collapseOne">
         <div class="col-md-1"><h4>Id</h6></div>

@@ -152,6 +152,12 @@ var myApp = angular.module('myApp');
         }
       };
 
+      $scope.deletePost = function(post)
+      {
+        var index = $scope.posts.indexOf(post);
+        $scope.posts.splice(index, 1);
+      };
+
     }]).filter('orderObjectBy', function () {
                        
         return function(input, attribute) {
