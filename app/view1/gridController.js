@@ -155,6 +155,11 @@ var myApp = angular.module('myApp');
         $scope.posts.splice(index, 1);
       };
 
+      $scope.postNew = function()
+      { 
+        console.log($scope.currentUser);
+      };
+
     }]).filter('orderObjectBy', function () {
                        
         return function(input, attribute) {

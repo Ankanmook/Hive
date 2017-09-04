@@ -1,12 +1,17 @@
 <!-- <p>Write the markup here!</p> -->
 
-    <p>select users </p>
-    <div>        
+<div class="row">
+    <div class="col-md-2"><h4>Select Users </h4>
+    </div>
+    <div class="col-md-3">        
         <select name="User"  class="btn btn-primary dropdown-toggle" type="button" ng-model="userId" ng-change="updateUser()">            
             <option ng-repeat="user in users" value="{{user.id}}">{{user.name}}</option>
-        </select>
+        </select>     
+    </div>   
+    <div class="col-md-4"  ng-show="currentUser">
+        <button class="btn btn-primary" type="button" ng-click="postNew()">Post        
     </div>
-    
+</div>
 <div class="row dashboard-content-header"  ng-show="currentUser">
         <div class="col-md-2"><h4>Name</h4></div>
         <div class="col-md-2"><h4>Email</h4></div>
