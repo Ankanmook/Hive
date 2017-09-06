@@ -2,9 +2,9 @@ var myApp = angular.module('myApp');
 
 (function(app){
     'use strict';
-    app.controller("gridController", ['$scope', '$http', 
-    function($scope, $http){
-
+    app.controller("gridController", ['$scope', '$http', '$rootScope', '$timeout','$uibModal', 
+    function($scope, $http, $rootScope, $timeout, $uibModal){
+ 
     $scope.post ;
 
     $scope.posts = [];
@@ -155,9 +155,19 @@ var myApp = angular.module('myApp');
         $scope.posts.splice(index, 1);
       };
 
+      $rootScope.$on("CallParentMethod", function (event,postData) {        
+        $scope.posts.push(postData);
+    });
+
       $scope.postNew = function()
       { 
-        console.log($scope.currentUser);
+        $timeout(function(){
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: '/view1/post.html',
+                controller: 'postController'
+            });            
+          }, 3); 
       };
 
     }]).filter('orderObjectBy', function () {

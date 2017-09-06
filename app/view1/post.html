@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h3 class="modal-title ">Write New Post</h3>
+</div>
+
+<form novalidate name="newPostForm">
+    
+<div class="row">
+  <div class="col-md-2"><h4>Select Users </h4>
+  </div>
+  <div class="col-md-3">        
+      <select name="User"  class="btn btn-primary dropdown-toggle" type="button" ng-model="userId" ng-change="updateUser()">            
+          <option ng-repeat="user in users" value="{{user.id}}">{{user.name}}</option>
+      </select>     
+  </div>   
+  <div class="col-md-4"  ng-show="currentUser">
+      <button class="btn btn-primary" type="button" ng-click="postNew()">Post        
+  </div> 
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <h4><small>Title</small></h4>
+    </div>
+    <div class="col-md-9 form-group">
+        <textarea class="form-control" row="1" id="postTitle" name="postTitle" ng-model="postTitle" required ng-minlength="5" placeholder="E.g ea molestias" />
+        <span ng-show="newPostForm.postTitle.$error.required" class="info-text">Post Title is Required</span>
+        <span ng-show="newPostForm.postTitle.$error.minlength" class="info-text">Post Title must be atleast 5 characters</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <h4><small>Body</small></h4>
+    </div>
+
+    <div class="col-md-9 form-group">
+        <textarea class="form-control" row="1" id="postBody" name="postBody" ng-model="postBody" required ng-minlength="5" ng-maxlength="100" placeholder="et iusto sed " />
+        <span ng-show="newPostForm.postBody.$error.required" class="info-text">Post Body is Required</span>
+        <span ng-show="newPostForm.postBody.$error.minlength" class="info-text">Post Body must be atleast 5 characters</span>
+        <span ng-show="newPostForm.postBody.$error.maxlength" class="info-text">Post Body must must not exceed 100 characters</span>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+      <div class="col-md-4">
+          <button class="btn btn-cancel" type="button" ng-click="cancelModal()">Cancel</button>
+          <button class="btn btn-success" type="button" ng-click="doneModal()">Done</button>
+      </div>
+  </div>
+
+</form>

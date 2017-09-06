@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 var theApp = angular.module('myApp', [
   'ngRoute',
+  'ui.bootstrap',
   //'myApp.view1',
   'myApp.version'
 ]).
