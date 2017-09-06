@@ -5,16 +5,18 @@
 <form novalidate name="newPostForm">
     
 <div class="row">
-  <div class="col-md-2"><h4>Select Users </h4>
+  <div class="col-md-2">
+    <input ng-show="false" class="form-control" type="text" id="userId" name="userId" ng-model="userId" required/>
+    <span ng-show="newPostForm.userId.$error.required" class="info-text">Select User to Post</span>
+    <span ng-show="!newPostForm.userId.$error.required" class="info-text">Post Sent To</span>
+
   </div>
-  <div class="col-md-3">        
+  <div class="col-md-9">        
       <select name="User"  class="btn btn-primary dropdown-toggle" type="button" ng-model="userId" ng-change="updateUser()">            
-          <option ng-repeat="user in users" value="{{user.id}}">{{user.name}}</option>
+          <option ng-repeat="user in users" value="{{user.id}}" required>{{user.name}}</option>
       </select>     
-  </div>   
-  <div class="col-md-4"  ng-show="currentUser">
-      <button class="btn btn-primary" type="button" ng-click="postNew()">Post        
-  </div> 
+
+  </div>
 </div>
 
 <div class="row">
