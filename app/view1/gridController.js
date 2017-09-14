@@ -2,9 +2,11 @@ var myApp = angular.module('myApp');
 
 (function(app){
     'use strict';
-    app.controller("gridController", ['$scope', '$http', '$rootScope', '$timeout','$uibModal', 
-    function($scope, $http, $rootScope, $timeout, $uibModal){
+    app.controller("gridController", ['$scope', '$http', '$rootScope', '$timeout','$uibModal', 'postData', 
+    function($scope, $http, $rootScope, $timeout, $uibModal,postData){
  
+        console.log(postData);
+
     $scope.post ;
 
     $scope.posts = [];
