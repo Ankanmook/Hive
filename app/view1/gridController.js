@@ -2,10 +2,10 @@ var myApp = angular.module('myApp');
 
 (function(app){
     'use strict';
-    app.controller("gridController", ['$scope', '$http', '$rootScope', '$timeout','$uibModal', 'postData', 
-    function($scope, $http, $rootScope, $timeout, $uibModal,postData){
+    app.controller("gridController", ['$scope', '$http', '$rootScope', '$timeout','$uibModal', 'postData','userData', 
+    function($scope, $http, $rootScope, $timeout, $uibModal,postData, userData){
  
-        console.log(postData);
+        
 
     $scope.post ;
 
@@ -30,79 +30,27 @@ var myApp = angular.module('myApp');
 
     function _getUser()
     {
-        $http.get("https://jsonplaceholder.typicode.com/users")
-        .then(function (response) {
-            //success
-            angular.copy(response.data, $scope.users); //copy data from reponse data to data       
+        userData.getUsers(function(users){
+            $scope.users = users;
             $scope.user = $scope.users[0];
             $scope.userId = $scope.user.userId;
-            //$scope.currentUser = $scope.user;
-        },
-        function (error) {
-            //failure
-            console.log( "Failed to load data " + error);
-        }).finally(function () {
+            $scope.currentUser = $scope.user;
         });
     }
 
-
     function _getPost(userId)
     {
-        $http.get("https://jsonplaceholder.typicode.com/posts?userId="+userId)
-        .then(function (response) {
-            //success
-            angular.copy(response.data, $scope.posts); //copy data from reponse data to data
-        },
-        function (error) {
-            //failure
-            console.log( "Failed to load data " + error);
-        }).finally(function () {
-        });    
+        postData.getPosts(userId,function(posts){
+            $scope.posts = posts;
+        });
     }
 
     function _getComments()
     {
         $scope.post.comments = [];
-        
-        $http.get("https://jsonplaceholder.typicode.com/comments?postId="+ $scope.post.id)
-        .then(function (response) {
-            //success
-            angular.copy(response.data, $scope.post.comments); //copy data from reponse data to data            
-            angular.forEach($scope.post.comments, function(el){
-                var index = el.id % 8;
-                switch (index) {            
-                    case 1:
-                        el.color = 'yellowItem';
-                        break;
-                    case 2:
-                        el.color = 'blueItem';
-                        break;
-                    case 3:
-                        el.color = 'redItem';
-                        break;
-                    case 4:
-                        el.color = 'brownItem';
-                        break;
-                    case 5:
-                        el.color = 'purpleItem';
-                        break;
-                    case 6:
-                        el.color = 'whiteItem';
-                        break;
-                    case 7:
-                        el.color = 'greenItem';
-                        break;
-                    case 8:
-                        el.color = 'pinkItem';
-                        break;
-                  }                
-            });
-        },
-        function (error) {
-            //failure
-            console.log( "Failed to load data " + error);
-        }).finally(function () {
-        });            
+        postData.getComments($scope.post,function(comments){
+            $scope.post.comments = comments;
+        });
     }
 
 
