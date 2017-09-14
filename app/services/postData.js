@@ -63,7 +63,21 @@ var myApp = angular.module('myApp');
                 }).finally(function () {
                 });            
         
-            } 
+            },
+            
+            post:function(postDataObject, successCallBack){
+
+                $http.post("https://jsonplaceholder.typicode.com/posts", postDataObject)
+                .then(function (response) {
+                    //success
+                    successCallBack(response);
+                },
+                   function (error) {
+                       //failure
+                       $log.warning( "Failed to load data " + error);
+                   }).finally(function () {
+                   });
+            }
         
         };
     })
